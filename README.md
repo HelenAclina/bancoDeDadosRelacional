@@ -1,26 +1,30 @@
-# 🗄️ bancoDeDadosRelacional
+# Modelagem de Banco de Dados Relacional
 
-Repositório da disciplina de **Banco de Dados Relacionais** — desenvolvimento
-SQL, modelagem de dados (Entidade-Relacionamento), normalização e consultas
-complexas com foco em integridade e performance.
+> Estudos de modelagem relacional e SQL — disciplina de Banco de Dados (Fatec Mauá), aplicada a um caso prático de pet shop.
 
-## 📂 Estrutura
+## Sobre o projeto
+
+Modelagem completa de um banco relacional para **pet shop** — o mesmo domínio do projeto [PetClean](https://github.com/HelenAclina/petclean), servindo de referência para a futura integração da aplicação com banco de dados.
+
+O script cobre do DDL às consultas analíticas: criação de tabelas com integridade referencial, restrições de domínio, dados de exemplo e três consultas de estudo.
+
+## Conteúdo
 
 ```
-📁 sql/                  → scripts de modelagem e consultas de estudo
-│  └── petshop_modelagem.sql   → modelagem completa de um pet shop (apoio ao projeto PetClean)
+sql/
+└── petshop_modelagem.sql   # DDL completo (4 tabelas) + dados + consultas de estudo
 ```
 
-## 📝 Conteúdos estudados
+## O que o script demonstra
 
-- [x] Modelagem ER — entidades, atributos e relacionamentos
-- [x] SQL — DDL (`CREATE`, `ALTER`) e DML (`INSERT`, `SELECT`, `UPDATE`, `DELETE`)
-- [ ] Normalização (1FN, 2FN, 3FN)
-- [ ] Joins e subconsultas
-- [ ] Funções de agregação e agrupamento
-- [ ] Índices e performance de consultas
+- Chaves primárias e estrangeiras (`PRIMARY KEY` / `FOREIGN KEY`) com `ON DELETE CASCADE` e `RESTRICT`
+- Restrições de integridade: `UNIQUE`, `CHECK`, `NOT NULL`, `ENUM`
+- Relacionamento N:N via tabela associativa (`agendamento`) com chave única composta para impedir duplo agendamento
+- **Consulta 1** — JOIN em 4 tabelas (agenda do dia com pet, cliente e serviço)
+- **Consulta 2** — agregação com `GROUP BY` (faturamento por serviço)
+- **Consulta 3** — subconsulta com `HAVING` (clientes com mais de um pet)
 
-## ▶️ Como executar os scripts
+## Como executar
 
 Requisito: MySQL 8+ (ou MariaDB).
 
@@ -28,18 +32,6 @@ Requisito: MySQL 8+ (ou MariaDB).
 mysql -u root -p < sql/petshop_modelagem.sql
 ```
 
-Ou, dentro do cliente MySQL:
-```sql
-SOURCE sql/petshop_modelagem.sql;
-```
+## Autora
 
-## 🧠 O script `petshop_modelagem.sql` demonstra
-
-- Chaves primárias e estrangeiras (`PRIMARY KEY` / `FOREIGN KEY`)
-- Restrições de integridade (`UNIQUE`, `CHECK`, `NOT NULL`, `ENUM`)
-- Relacionamentos 1:N com `ON DELETE CASCADE`
-- Consultas com `JOIN` e funções de agregação
-
-## 🎓 Contexto
-
-Disciplina da graduação em Desenvolvimento de Software Multiplataforma (Fatec Mauá).
+**Helen Aclina** · [@HelenAclina](https://github.com/HelenAclina)
